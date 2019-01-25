@@ -31,6 +31,7 @@
  *   DAMAGE.                                                               *
  *                                                                         *
  **************************************************************************/
+#include <iostream>
 #include "formal_parameter_list.h"
 #include "canonical.h"
 #include "parse_buffer.h"
@@ -61,6 +62,10 @@ void formal_parameter_list::read(chewer<CharSeq> & chew)
 					}
 					chew(+1,continuation);
 					if (*chew != '.') {
+              if (*chew == ')') {
+                 break;
+              }
+
 						_defect = formal_parameter_list::unclosed;
 						break;
 					}

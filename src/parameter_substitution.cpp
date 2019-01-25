@@ -34,6 +34,7 @@
  *                                                                         *
  **************************************************************************/
 
+#include <iostream>
 #include "parameter_substitution.h"
 #include "diagnostic.h"
 #include "symbol.h"
@@ -103,7 +104,8 @@ ptrdiff_t format::adjust_for_token_paste_op(size_t pos)
 	if (specifier::get_ending_at(_fmt,pos,i_off,h_off) != string::npos) {
 		_fmt[h_off] = char(handling::substitute_arg);
 	} else if (!identifier::is_valid_char(_fmt[pos]) && _fmt[pos] != '#') {
-		throw error_bad_token_paste();
+      if( _fmt[pos] != ',' )
+        throw error_bad_token_paste();
 	}
 	size_t start_cut = pos + 1;
 	pos = mark + 2;

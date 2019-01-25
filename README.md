@@ -60,3 +60,19 @@ There is a test suite in coan/test_coan. The test suite is executed by
 `make check'
 
 imk at burroingroingjoing dot com
+
+
+# FIXED BUG
+## 1. recognize ##,__VA_ARGS__ 
+
+I wrote codes for passing syntax that various args expression in define macro function.
+
+```C
+#define FOO( _a1, ...)  bar( (_a1) ,##__VA_ARGS__ )  
+```
+
+Above codes will be accepted.
+
+2019.01.25
+ 
+
